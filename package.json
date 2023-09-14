@@ -1,0 +1,30 @@
+{
+  "name": "express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Namees-aLbayati/SocailApp_MongoDB.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Namees-aLbayati/SocailApp_MongoDB/issues"
+  },
+  "homepage": "https://github.com/Namees-aLbayati/SocailApp_MongoDB#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongodb": "^6.0.0",
+    "mongoose": "^7.5.1"
+  },
+  "devDependencies": {
+    "connect-livereload": "^0.6.1",
+    "livereload": "^0.9.3",
+    "nodemon": "^3.0.1"
+  }
+}
