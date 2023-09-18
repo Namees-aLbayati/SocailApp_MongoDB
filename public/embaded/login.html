@@ -70,27 +70,30 @@ span.psw {
 
 <h2>Login Form</h2>
 
-<form action="/action_page.php" method="post">
+<form >
   <div class="imgcontainer">
     <img src="../images/images.jpeg" alt="Avatar" class="avatar" style="width: 100px;height:100px;">
   </div>
 
   <div class="container">
-    <label for="uname"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required>
+    <label for="uname"><b>User Name</b></label>
+    <input type="text" id='emailID' placeholder="Enter Username" name="uname" required>
 
     <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+    <input type="password" id="passwordID" placeholder="Enter Password" name="psw" required>
         
-    <button type="submit">Login</button>
+    <button type="submit" id="submitID">Login</button>
   
   </div>
 
   <div class="container" style="background-color:#f1f1f1">
     <button type="button" class="cancelbtn">Cancel</button>
-    <span class="psw">Forgot <a href="#">password?</a></span>
+    <span class="psw">new user?    <a href="#">Create a new account?</a></span>
   </div>
 </form>
+<script src="../script/login.js">
+
+</script>
 
 </body>
 </html>
