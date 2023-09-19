@@ -4,7 +4,6 @@ const userSchema = new mongoose.Schema({
   userName: String,
   email: {
     type: String,
-    unique: true,
     trim: true,
     lowercase: true,
     min:2
@@ -35,6 +34,18 @@ userSchema.pre('save', async function (next) {
   });
 
 const User = mongoose.model('User', userSchema);
+ const seed=async()=>{
+  await User.deleteMany({})
+let leng= await User.find()
+if(leng.length==0){
+  let a=await User.create({userName:'namees',email:'test@test.com',password:'0000'});
+console.log('seeded')
+}else{
+  const seeded=await User.find({})
+  console.log('seeded already',seeded)
+}
+ }
 
+ seed()
 
 module.exports = User;
