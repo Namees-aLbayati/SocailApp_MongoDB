@@ -26,12 +26,19 @@ async function postData(data) {
       body: JSON.stringify(data), // Convert the data to JSON format
     };
   
-      const response = await fetch(url, options);
-  
-     console.log('back from api posr',response)
-  
-  if(response.status==200){
-   location.assign('/welcome')
+      const response1 = await fetch(url, options);
+ 
+  if(response1.status==200){
+
+    const response=await response1.json()
+    if(response.isAdmin==true){
+console.log('he is admin')
+location.assign('/admin/dashboard')
+    }else{
+        location.assign('/user/dashboard')
+
+    }
+ 
 
   }else{
     window.alert('Invalid username or Password! Try again')

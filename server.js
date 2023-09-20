@@ -20,6 +20,12 @@ livereloadServer.watch(__dirname + '/public'); // Adjust this path to your stati
 
 // Connect Livereload to your Express.js app
 app.use(connectLivereload());
+ 
+app.use((req,res,next)=>{
+
+
+    next()
+})
 
 app.get('/',(req,res)=>{
 
@@ -31,12 +37,16 @@ app.get('/login',(req,res)=>{
    res.sendFile(path.join(__dirname,'public/embaded/login.html'))
 })
 
-app.get('/welcome',(req,res)=>{
+app.get('/user/dashboard',(req,res)=>{
     
     res.sendFile(path.join(__dirname,'public/embaded/welcome.html'))
  })
  
-
+ app.get('/admin/dashboard',(req,res)=>{
+    
+    res.sendFile(path.join(__dirname,'public/embaded/admin.html'))
+ })
+ 
 
 
 

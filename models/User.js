@@ -36,9 +36,9 @@ userSchema.pre('save', async function (next) {
 const User = mongoose.model('User', userSchema);
  const seed=async()=>{
   await User.deleteMany({})
-let leng= await User.find()
+let leng= await User.find({})
 if(leng.length==0){
-  let a=await User.create({userName:'namees',email:'test@test.com',password:'0000'});
+  let a=await User.insertMany([{userName:'namees',email:'test@test.com',password:'0000'},{userName:'admin',email:'admin@admin.com',password:'admin',isAdmin:true}]);
 console.log('seeded')
 }else{
   const seeded=await User.find({})

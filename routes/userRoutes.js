@@ -2,9 +2,9 @@ require('dotenv').config()
 const router=require('express').Router();
 const User=require('../models/User');
 const jwt=require('jsonwebtoken')
-const cookieParser=require('cookie-parser')
+const cookieParser=require('cookie-parser');
+const setCookies = require('../helpers/setCookies');
 router.use(cookieParser());
-
 
 
 router.post('/signup',async(req,res)=>{
@@ -14,8 +14,10 @@ let creat=User.findOne(req.body)
 })
 
 
-router.post('/login',async(req,res)=>{
-await User.findOne({userName:req.body.userName,password:req.body.password})
+
+router.post('/login',setCookies,(req,res)=>{
+
+ User.findOne({userName:req.body.userName,password:req.body.password})
 .exec().then((result)=>{
 
     if(result==null){
@@ -25,21 +27,23 @@ await User.findOne({userName:req.body.userName,password:req.body.password})
     
     }
 
-const data={
-    email:result.email,
-    password:result.password
-}
+    const data={
+        email:result.email,
+        password:result.password,
+        isadmin:result.isAdmin
+    }
+        res.status(200).json({messege:'ok',isAdmin:result.isAdmin})
 
-    const token = jwt.sign(data, process.env.secKey, { expiresIn: '3h' });
-
-    const thirtyDaysInSeconds = 30 * 24 * 60 * 60;
     
 
-    res.cookie('token', token, { maxAge: thirtyDaysInSeconds * 1000 }); // Convert seconds to milliseconds
 
-    console.log('token level reached',req.cookies.token)
 
-    res.json({messege:'ok'})
+
+
+
+
+
+
 })
 
 
