@@ -39,7 +39,7 @@ const User = mongoose.model('User', userSchema);
 let leng= await User.find({})
 if(leng.length==0){
   let a=await User.insertMany([{userName:'namees',email:'test@test.com',password:'0000'},{userName:'admin',email:'admin@admin.com',password:'admin',isAdmin:true}]);
-console.log('seeded')
+//console.log('seeded')
 }else{
   const seeded=await User.find({})
   console.log('seeded already',seeded)

@@ -3,7 +3,7 @@ const app=express();
 const PORT=process.env.PORT||3001;
 const path=require('path')
 const cookieParser = require('cookie-parser');
- 
+ const signupRou=require('./routes/signupRoute')
 const Userroutes=require('./routes/userRoutes')
 const db=require('./config/connection')
 const livereload = require('livereload');
@@ -12,7 +12,7 @@ const {checkEmail,checkPass}=require('./helpers/helperFun')
 app.use(express.urlencoded({extends:true}))
 app.use(express.json())
 app.use(express.static('public'))
-
+app.use(signupRou)
 app.use(cookieParser())
 app.use('/api',Userroutes)
 const livereloadServer = livereload.createServer();
@@ -46,12 +46,16 @@ app.get('/user/dashboard',(req,res)=>{
     
     res.sendFile(path.join(__dirname,'public/embaded/admin.html'))
  })
+
  
+ app.get('/signup',(req,res)=>{
+    
+    res.sendFile(path.join(__dirname,'public/embaded/signup.html'))
+ })
 
 
 
 db.once('open', () => {
-    console.log('Connected to MongoDB database');
     app.listen(PORT,()=>{
         console.log('connected to 3001')
     });

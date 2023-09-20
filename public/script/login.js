@@ -2,6 +2,7 @@ console.log('login here');
 const emailEL=document.getElementById('emailID');
 const passEL=document.getElementById('passwordID');
 const submitEL=document.getElementById('submitID');
+const canELE= document.getElementById('cancId')
 submitEL.addEventListener('click',(e)=>{
 e.preventDefault()
     const userData={
@@ -44,5 +45,12 @@ location.assign('/admin/dashboard')
     window.alert('Invalid username or Password! Try again')
   }
   }
+
+canELE.addEventListener('click',(e)=>{
+    e.preventDefault()
+    location.assign('/')
+
+  })
+ 
   
   
