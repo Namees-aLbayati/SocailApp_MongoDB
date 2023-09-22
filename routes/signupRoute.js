@@ -8,8 +8,7 @@ await User.create(req.body).then((data)=>{
         res.status(404).json({messege:'unable to create the account'});
 
     }
-return res.redirect('/')
-
+res.status(200).json({data:data})
 
 
 })

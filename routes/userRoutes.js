@@ -1,5 +1,13 @@
 require('dotenv').config()
 const router=require('express').Router();
+const session = require('express-session');
+
+router.use(session({
+    secret:process.env.secKey, // Change this to a strong, random value
+    resave: false,
+    saveUninitialized: true,
+  }));
+
 const User=require('../models/User');
 const jwt=require('jsonwebtoken')
 const cookieParser=require('cookie-parser');
@@ -19,7 +27,6 @@ router.post('/login',setCookies,(req,res)=>{
 
  User.findOne({userName:req.body.userName,password:req.body.password})
 .exec().then((result)=>{
-
     if(result==null){
         return res.status(403).json({
             messege:'Invalid Username or Password'
@@ -32,9 +39,10 @@ router.post('/login',setCookies,(req,res)=>{
         password:result.password,
         isadmin:result.isAdmin
     }
+    req.session.loggedIn = true;
+
         res.status(200).json({messege:'ok',isAdmin:result.isAdmin})
 
-    
 
 
 
