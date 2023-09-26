@@ -30,7 +30,7 @@ async function postData(data) {
       const response1 = await fetch(url, options);
  
   if(response1.status==200){
-
+console.log('response here',response1)
     const response=await response1.json()
     if(response.isAdmin==true){
 console.log('he is admin')
