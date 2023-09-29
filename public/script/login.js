@@ -1,4 +1,5 @@
 console.log('login here');
+let a=1;
 const emailEL=document.getElementById('emailID');
 const passEL=document.getElementById('passwordID');
 const submitEL=document.getElementById('submitID');
