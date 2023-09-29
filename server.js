@@ -36,11 +36,10 @@ app.use(connectLivereload());
  
 
 
-app.get('/',(req,res)=>{
-
-    res.sendFile(__dirname+'./public/index.html')
-
-})
+app.get('/', preventLoggedInUsers,(req, res) => {
+    const filePath = path.join(__dirname, 'public', 'index.html');
+    res.sendFile(filePath);
+  });
 
 app.get('/login',preventLoggedInUsers,(req,res)=>{
     
@@ -70,11 +69,10 @@ app.get('/user/dashboard',(req,res)=>{
         res.redirect('/');
 
     console.log('signout',req.user)
-   if(req.user){
-   // res.clearCookie('token');
-
-   // res.redirect('/');
-   // res.json({ message: 'You have been signed out' });
+    const token=req.user;
+   if(token){
+    res.clearCookie('tokenUser');
+ res.redirect('/');
 
    }
 
