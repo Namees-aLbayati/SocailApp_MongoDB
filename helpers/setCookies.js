@@ -62,6 +62,7 @@ function verifyToken(req, res, next) {
             // Token is valid, store the decoded data in req.user
             req.user = 'admin';
             next()
+
         });
 
     }
@@ -76,10 +77,6 @@ function verifyToken(req, res, next) {
         })
 
     }
-
-
-
-
 }
 
 

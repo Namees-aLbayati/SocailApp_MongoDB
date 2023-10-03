@@ -66,15 +66,21 @@ app.get('/user/dashboard',(req,res)=>{
 
 
  app.get('/signout', verifyToken, (req, res) => {
-        res.redirect('/');
 
     console.log('signout',req.user)
     const token=req.user;
-   if(token){
-    res.clearCookie('tokenUser');
- res.redirect('/');
+    if(token=='admin'){
+     res.clearCookie('tokenAdmin');
+  res.redirect('/');
+  console.log('signed out admin')
+ 
+    }else{
+      res.clearCookie('tokenUser');
+  res.redirect('/');
+  console.log('signed out user')
 
-   }
+    }
+  
 
 });
 
